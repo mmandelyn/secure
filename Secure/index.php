@@ -39,12 +39,24 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Project/PHP/PHPProject.php to edi
         $conn->close();
         
         echo "<br> call password_hash<br>";
-        $result = password_hash("pwd", PASSWORD_DEFAULT);
-        echo "Result is $result";
+        $hash = password_hash("pwd", PASSWORD_DEFAULT);
+        echo "Result is $hash";
                 
         echo "<br> call password_valid<br>";
         $valid = password_verify("pwd", $db_password);
         echo "Valid is $valid";
+        
+        if ($valid){
+            $_SESSION['user'] = $username;
+        }
+        
         ?>
+        
+        //register page
+        //with username, password, repeat
+        //insert what they type into the database, but make it HASH
+        //$v = password_hash($repeat, PASSWORD_DEFAULT);
+        //INSERT username, $v into the database
+        //then allow them to type in their username return their hash password
     </body>
 </html>
